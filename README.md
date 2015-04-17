@@ -40,7 +40,7 @@ The way of reading the file with tidy output is as follows:
 
 Please note that if open in notepad there won´t be a clean way of viewing all data.
 
-This output is a table of 180 rows and 68 columns.  180 rows because there are 30 individuals performing 6 different activities.  68 columns because they are the variables related with mean and standard deviation as required in the project.
+This output is a table of 180 rows and 68 columns.  180 rows because there are 30 individuals performing 6 different activities.  68 columns because they are 66 the variables related with mean and standard deviation as required in the project, plus 2 more columns for the activity and the subject ID.
 
 # Structure of the input data
 
