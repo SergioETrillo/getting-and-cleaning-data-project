@@ -16,9 +16,9 @@ Output:
 
 In the repository https://github.com/tigretoncio/getting-and-cleaning-data-project there are 3 files available as solution for this project:
 
-Readme.md: (this file)
-Codebook.md : Contains the code book information of the variables used
-run_analysis.R: The script code that cleans the data and performs the required activities
+-Readme.md: (this file)  
+-Codebook.md : Contains the code book information of the variables used  
+-run_analysis.R: The script code that cleans the data and performs the required activities  
 
 # How to run the script run_analysis.R
 Unzip the data of the project, and copy the file run_analysis.R in the "UCI HAR Dataset" folder. 
