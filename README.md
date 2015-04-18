@@ -38,7 +38,7 @@ The way of reading the file with tidy output is as follows:
 
 (as per https://class.coursera.org/getdata-013/forum/thread?thread_id=30)
 
-Please note that if open in notepad there won´t be a clean way of viewing all data.
+Please note that if open in notepad there wonÂ´t be a clean way of viewing all data.
 
 This output is a table of 180 rows and 68 columns.  180 rows because there are 30 individuals performing 6 different activities.  68 columns because they are 66 the variables related with mean and standard deviation as required in the project, plus 2 more columns for the activity and the subject ID.
 
@@ -71,7 +71,7 @@ Changes the codes available in "activity_labels.txt" into the descriptive name.
 
 4.- Appropriately labels the data set with descriptive variable names. 
 The following transformations have been applied:
-temp <- gsub("^t","time-",temp)   : A variable that starts with t is changed to start with "time"
+temp <- gsub("^t","time-",temp)   : A variable that starts with t is changed to start with "time" \n
 temp <- gsub("^f","frequency-",temp) A variable that starts with f is changed to start with "frequency"
 temp <- gsub("Acc","_Acceleration",temp) If variable contains "Acc" it is changed to "Acceleration"
 temp <- gsub("Gyro","_Gyroscope-",temp) If variable containins "Gyro" it is changed to "Gyroscope"
