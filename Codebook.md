@@ -1,5 +1,6 @@
 CodeBook
 
+
 1	Activity
 	type of activity performed. Available activities:
 	WALKING
