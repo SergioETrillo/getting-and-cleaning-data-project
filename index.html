@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Getting-and-cleaning-data-project by tigretoncio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Getting-and-cleaning-data-project</h1>
+      <h2 class="project-tagline">Course Project getting and cleaning data</h2>
+      <a href="https://github.com/tigretoncio/getting-and-cleaning-data-project" class="btn">View on GitHub</a>
+      <a href="https://github.com/tigretoncio/getting-and-cleaning-data-project/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/tigretoncio/getting-and-cleaning-data-project/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="getting-and-cleaning-data-project" class="anchor" href="#getting-and-cleaning-data-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>getting-and-cleaning-data-project</h1>
+
+<p>Course Project getting and cleaning data
+This project uses data from the project 
+All the data is available at
+<a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a> </p>
+
+<p>The dataset from this project comes from:</p>
+
+<p>[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012</p>
+
+<p>The project requirements are available at:</p>
+
+<p><a href="https://class.coursera.org/getdata-013/human_grading/view/courses/973500/assessments/3/submissions">https://class.coursera.org/getdata-013/human_grading/view/courses/973500/assessments/3/submissions</a></p>
+
+<p>Output:</p>
+
+<p>In the repository <a href="https://github.com/tigretoncio/getting-and-cleaning-data-project">https://github.com/tigretoncio/getting-and-cleaning-data-project</a> there are 3 files available as solution for this project:</p>
+
+<p>Readme.md: (this file)
+Codebook.md : Contains the code book information of the variables used
+run_analysis.R: The script code that cleans the data and performs the required activities</p>
+
+<h1>
+<a id="how-to-run-the-script-run_analysisr" class="anchor" href="#how-to-run-the-script-run_analysisr" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to run the script run_analysis.R</h1>
+
+<p>Unzip the data of the project, and copy the file run_analysis.R in the "UCI HAR Dataset" folder. 
+Set the working directory on this "UCI HAR Dataset" folder too.
+Execute the script using source("run_analysis.R").</p>
+
+<p>The script will create the tidy data output "av_data.txt".  That result was added to the submission page.  </p>
+
+<p>run_analysis.R uses the package dplyr. If not installed you can use the command &gt; install.packages("dplyr") if the package is not available.</p>
+
+<h1>
+<a id="to-read-the-output-in-av_datatxt" class="anchor" href="#to-read-the-output-in-av_datatxt" aria-hidden="true"><span class="octicon octicon-link"></span></a>To read the output in "av_data.txt"</h1>
+
+<p>The way of reading the file with tidy output is as follows:</p>
+
+<p>data &lt;- read.table(file_path, header = TRUE) 
+  View(data)</p>
+
+<p>(as per <a href="https://class.coursera.org/getdata-013/forum/thread?thread_id=30">https://class.coursera.org/getdata-013/forum/thread?thread_id=30</a>)</p>
+
+<p>Please note that if open in notepad there won´t be a clean way of viewing all data.</p>
+
+<p>This output is a table of 180 rows and 68 columns.  180 rows because there are 30 individuals performing 6 different activities.  68 columns because they are 66 the variables related with mean and standard deviation as required in the project, plus 2 more columns for the activity and the subject ID.</p>
+
+<h1>
+<a id="structure-of-the-input-data" class="anchor" href="#structure-of-the-input-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Structure of the input data</h1>
+
+<p>The data is being provided in different folders and files, mainly there are two sets of data: test and train.  The result comes from the original data and performing the following cleaning up activities as per the project requirements.  The activities that the 30 individuals perform are found in file "activity_labels.txt" with the following codes:</p>
+
+<p>1   WALKING
+2   WALKING_UPSTAIRS
+3   WALKING_DOWNSTAIRS
+4   SITTING
+5   STANDING
+6   LAYING</p>
+
+<p>The variables measured are available in X_train and X_test, and contain raw data of 561 variables.  Script cleans data to reduce variable to 68 columns, which are the only ones with mean() and std() elements. Other variables such as gravityMean have been conciously left out of the solution, because the variable is not an explicit mean calculation.  This strategic decision is supported by <a href="https://class.coursera.org/getdata-013/forum/thread?thread_id=30">https://class.coursera.org/getdata-013/forum/thread?thread_id=30</a></p>
+
+<p>The script performs the following activities:</p>
+
+<h2>
+<a id="0--reads-all-the-data-files" class="anchor" href="#0--reads-all-the-data-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>0.- Reads all the data files</h2>
+
+<h2>
+<a id="1--merges-the-training-and-the-test-sets-to-create-one-data-set" class="anchor" href="#1--merges-the-training-and-the-test-sets-to-create-one-data-set" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.- Merges the training and the test sets to create one data set.</h2>
+
+<p>For that it adds columns Activity and Subject ID to the train and test datasets, and then merges both datasets together using rbind, removing from memory temporary elements not used anymore</p>
+
+<h2>
+<a id="2--extracts-only-the-measurements-on-the-mean-and-standard-deviation-for-each-measurement" class="anchor" href="#2--extracts-only-the-measurements-on-the-mean-and-standard-deviation-for-each-measurement" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.- Extracts only the measurements on the mean and standard deviation for each measurement.</h2>
+
+<p>As above, 68 columns are extracted.  See Codebook for further information, and "features_info.txt" in the "UCI HAR Dataset" folder for further info about these variables.</p>
+
+<h2>
+<a id="3--uses-descriptive-activity-names-to-name-the-activities-in-the-data-set-68-columns" class="anchor" href="#3--uses-descriptive-activity-names-to-name-the-activities-in-the-data-set-68-columns" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.- Uses descriptive activity names to name the activities in the data set (68 columns)</h2>
+
+<p>Changes the codes available in "activity_labels.txt" into the descriptive name.</p>
+
+<h2>
+<a id="4--appropriately-labels-the-data-set-with-descriptive-variable-names" class="anchor" href="#4--appropriately-labels-the-data-set-with-descriptive-variable-names" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.- Appropriately labels the data set with descriptive variable names.</h2>
+
+<p>The following transformations have been applied:</p>
+
+<ul>
+<li>temp &lt;- gsub("^t","time-",temp)   : A variable that starts with t is changed to start with "time"<br>
+</li>
+<li>temp &lt;- gsub("^f","frequency-",temp) A variable that starts with f is changed to start with "frequency"<br>
+</li>
+<li>temp &lt;- gsub("Acc","_Acceleration",temp) If variable contains "Acc" it is changed to "Acceleration"<br>
+</li>
+<li>temp &lt;- gsub("Gyro","_Gyroscope-",temp) If variable contains "Gyro" it is changed to "Gyroscope"<br>
+</li>
+<li>temp &lt;- gsub("Mag","-Magnitude-",temp) If variable contains "Mag" it is changed to "Magnitude"<br>
+</li>
+<li>temp &lt;- gsub("BodyBody","Body-",temp) This is to correct evident errors in data: there are variables containing "BodyBody" and are changed to "Body"<br>
+</li>
+<li>temp &lt;- gsub("std","standard_deviation",temp)  If variable contains "std" it is changed to "standard_deviation"<br>
+</li>
+<li>temp &lt;- gsub("--","-",temp) Those ones are to uniformize variable names<br>
+</li>
+<li>temp &lt;- gsub("-<em>","</em>",temp) Some as above<br>
+</li>
+</ul>
+
+<h2>
+<a id="5--from-the-data-set-in-step-4-creates-a-second-independent-tidy-data-set-with-the-average-of-each-variable-for-each-activity-and-each-subject" class="anchor" href="#5--from-the-data-set-in-step-4-creates-a-second-independent-tidy-data-set-with-the-average-of-each-variable-for-each-activity-and-each-subject" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.- From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.</h2>
+
+<p>The result of the script analysis is a text document of name "av_data.txt". This contains a table of 180 rows and 68 columns, 180 is the result of having 30 individuals performing 6 different activities, and having collected 68 different variables per individual and activity.  This respects the tidy structrure required for the project.  This is performed using the dplyr package grouping by Activity and Subject_ID and summarising the data.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/tigretoncio/getting-and-cleaning-data-project">Getting-and-cleaning-data-project</a> is maintained by <a href="https://github.com/tigretoncio">tigretoncio</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
