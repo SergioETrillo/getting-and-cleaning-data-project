@@ -58,30 +58,30 @@ The variables measured are available in X_train and X_test, and contain raw data
 
 
 The script performs the following activities:
-0.- Reads all the data files
+##0.- Reads all the data files
 
-1.- Merges the training and the test sets to create one data set.
+##1.- Merges the training and the test sets to create one data set.
 For that it adds columns Activity and Subject ID to the train and test datasets, and then merges both datasets together using rbind, removing from memory temporary elements not used anymore
 
-2.- Extracts only the measurements on the mean and standard deviation for each measurement. 
+##2.- Extracts only the measurements on the mean and standard deviation for each measurement. 
 As above, 68 columns are extracted.  See Codebook for further information, and "features_info.txt" in the "UCI HAR Dataset" folder for further info about these variables.
 3.- Uses descriptive activity names to name the activities in the data set (68 columns)
 Changes the codes available in "activity_labels.txt" into the descriptive name.
 
 
-4.- Appropriately labels the data set with descriptive variable names. 
+##4.- Appropriately labels the data set with descriptive variable names. 
 The following transformations have been applied:
-temp <- gsub("^t","time-",temp)   : A variable that starts with t is changed to start with "time" \n
-temp <- gsub("^f","frequency-",temp) A variable that starts with f is changed to start with "frequency"
-temp <- gsub("Acc","_Acceleration",temp) If variable contains "Acc" it is changed to "Acceleration"
-temp <- gsub("Gyro","_Gyroscope-",temp) If variable containins "Gyro" it is changed to "Gyroscope"
-temp <- gsub("Mag","-Magnitude-",temp) If variable containins "Mag" it is changed to "Magnitude"
-temp <- gsub("BodyBody","Body-",temp) This is to correct evident errors in data: there are variables containing "BodyBody" and are changed to "Body"
-temp <- gsub("std","standard_deviation",temp)  If variable containins "std" it is changed to "standard_deviation"
-temp <- gsub("--","-",temp) Those ones are to uniformize variable names
-temp <- gsub("-_","_",temp) Some as above
+*temp <- gsub("^t","time-",temp)   : A variable that starts with t is changed to start with "time" \n
+*temp <- gsub("^f","frequency-",temp) A variable that starts with f is changed to start with "frequency"
+*temp <- gsub("Acc","_Acceleration",temp) If variable contains "Acc" it is changed to "Acceleration"
+*temp <- gsub("Gyro","_Gyroscope-",temp) If variable containins "Gyro" it is changed to "Gyroscope"
+*temp <- gsub("Mag","-Magnitude-",temp) If variable containins "Mag" it is changed to "Magnitude"
+*temp <- gsub("BodyBody","Body-",temp) This is to correct evident errors in data: there are variables containing "BodyBody" and are changed to "Body"
+*temp <- gsub("std","standard_deviation",temp)  If variable containins "std" it is changed to "standard_deviation"
+*temp <- gsub("--","-",temp) Those ones are to uniformize variable names
+*temp <- gsub("-_","_",temp) Some as above
 
-5.- From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+##5.- From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 The result of the script analysis is a text document of name "av_data.txt". This contains a table of 180 rows and 68 columns, 180 is the result of having 30 individuals performing 6 different activities, and having collected 68 different variables per individual and activity.  This respects the tidy structrure required for the project.  This is performed using the dplyr package grouping by Activity and Subject_ID and summarising the data.
 
